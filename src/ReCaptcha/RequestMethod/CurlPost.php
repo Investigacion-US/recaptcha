@@ -90,6 +90,11 @@ class CurlPost implements RequestMethod
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_SSL_VERIFYPEER => true
         );
+
+        # Special options for Investigacion US
+        $options[CURLOPT_HTTPPROXYTUNNEL] = true;
+        $options[CURLOPT_PROXY] = 'http://proxy.int.local:3128';
+
         $this->curl->setoptArray($handle, $options);
 
         $response = $this->curl->exec($handle);
